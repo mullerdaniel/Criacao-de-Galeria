@@ -1,35 +1,127 @@
 body {
-    background-color: white;
+    background-color: rgb(59, 59, 59);
 }
 
 .categoria {
     display: flex;
 }
 
-.classificacao {
-    background-color: white;
-    border: 5px solid black;
-    padding: 30px 50px;
+/* TODAS AS CLASSIFICAÇÕES */
+.classificacao-s {
+    background-color: rgb(255, 91, 91);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
 }
 
-.classificacao h3 {
+.classificacao-s h3 {
     font-size: 1.5rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.classificacao-a {
+    background-color: rgb(255, 168, 97);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
+}
+
+.classificacao-a h3 {
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.classificacao-b {
+    background-color: rgb(252, 255, 85);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
+}
+
+.classificacao-b h3 {
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.classificacao-c {
+    background-color: rgb(100, 255, 113);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
+}
+
+.classificacao-c h3 {
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.classificacao-d {
+    background-color: rgb(75, 213, 255);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
+}
+
+.classificacao-d h3 {
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.classificacao-e {
+    background-color: rgb(167, 120, 255);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
+}
+
+.classificacao-e h3 {
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.classificacao-f {
+    background-color: rgb(255, 103, 255);
+    border: 7px solid black;
+    padding: 5px 30px 50px;
+    height: 25px;
+    width: 20px;
+}
+
+.classificacao-f h3 {
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* FIM */
+
+
 .dropszones {
-    background-color: rgb(255, 145, 0);
+    background-color: rgb(59, 59, 59);
     padding: 10px;
-    border: 5px solid black;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
     flex-grow: 1;
 }
 
 .arastar {
+    background-color: rgb(128, 128, 128);
     display: flex;
+    border: 7px solid black;
+    flex-wrap: wrap;
 }
 
 .imagens-arastar {
-    background-color: aliceblue;
-    padding: 30px 50px;
-    border: 5px solid black;
+    padding: 10px 20px;
+}
+
+.imagens-arastar img {
+    height: 180px;
+    width: 130px;
 }
