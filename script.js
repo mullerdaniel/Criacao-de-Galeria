@@ -1,28 +1,6 @@
 const draggables = document.querySelectorAll('.draggable');
 const dropzones = document.querySelectorAll('.dropzone');
 
-let scrollInterval = null;
-const SCROLL_BOUNDARY = 75;
-const SCROLL_SPEED = 10; 
-// ------------------------------------------
-
-function startScroll(direction) {
-    if (scrollInterval) return; 
-
-    scrollInterval = setInterval(() => {
-        window.scrollBy(0, direction * SCROLL_SPEED); 
-    }, 25);
-}
-
-function stopScroll() {
-    if (scrollInterval) {
-        clearInterval(scrollInterval);
-        scrollInterval = null;
-    }
-}
-
-// ---------------------------------------------------------------------
-
 draggables.forEach(draggable => {
     
     if (!draggable.id) {
@@ -35,28 +13,10 @@ draggables.forEach(draggable => {
         draggable.classList.add('dragging');
     });
 
-    draggable.addEventListener('drag', (event) => {
-        const mouseY = event.clientY;
-        const viewportHeight = window.innerHeight;
-
-        if (mouseY < SCROLL_BOUNDARY) {
-            startScroll(-1); 
-        } 
-        else if (mouseY > viewportHeight - SCROLL_BOUNDARY) {
-            startScroll(1);
-        } 
-        else {
-            stopScroll();
-        }
-    });
-
     draggable.addEventListener('dragend', () => {
         draggable.classList.remove('dragging');
-        stopScroll(); 
     });
 });
-
-// ---------------------------------------------------------------------
 
 dropzones.forEach(dropzone => {
     
