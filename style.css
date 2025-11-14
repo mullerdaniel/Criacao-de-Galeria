@@ -1,113 +1,107 @@
+
 body {
     background-color: rgb(59, 59, 59);
+    margin: 0;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .categoria {
     display: flex;
+    align-items: stretch;
+    min-height: 150px;
 }
 
-/* TODAS AS CLASSIFICAÇÕES */
+.classificacao-s,
+.classificacao-a,
+.classificacao-b,
+.classificacao-c,
+.classificacao-d,
+.classificacao-e,
+.classificacao-f {
+    padding: 5px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 7px solid black;
+    color: white;
+}
+
+.classificacao-s h3,
+.classificacao-a h3,
+.classificacao-b h3,
+.classificacao-c h3,
+.classificacao-d h3,
+.classificacao-e h3,
+.classificacao-f h3 {
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+}
+
 .classificacao-s {
     background-color: rgb(255, 91, 91);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
-}
-
-.classificacao-s h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .classificacao-a {
     background-color: rgb(255, 168, 97);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
-}
-
-.classificacao-a h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .classificacao-b {
     background-color: rgb(252, 255, 85);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
-}
-
-.classificacao-b h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
 }
 
 .classificacao-c {
     background-color: rgb(100, 255, 113);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
-}
-
-.classificacao-c h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .classificacao-d {
     background-color: rgb(75, 213, 255);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
-}
-
-.classificacao-d h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .classificacao-e {
     background-color: rgb(167, 120, 255);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
-}
-
-.classificacao-e h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .classificacao-f {
     background-color: rgb(255, 103, 255);
-    border: 7px solid black;
-    padding: 5px 30px 50px;
-    height: 25px;
-    width: 20px;
 }
-
-.classificacao-f h3 {
-    font-size: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-/* FIM */
 
 
 .dropszones {
     background-color: rgb(59, 59, 59);
     padding: 10px;
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
-    border-right: 5px solid black;
+    border-top: 7px solid black;
+    border-bottom: 7px solid black;
+    border-right: 7px solid black;
     flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dropzone {
+    height: 140px;
+    width: 100px;
+    border: 2px dashed #888;
+    background-color: #4b4b4b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropzone.over {
+    border: 2px solid #00ff4c;
+    background-color: #6d6d6d;
+    transform: scale(1.05);
+    transition: all 0.1s ease-out;
 }
 
 .arastar {
@@ -115,13 +109,24 @@ body {
     display: flex;
     border: 7px solid black;
     flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
 }
 
 .imagens-arastar {
-    padding: 10px 20px;
+    padding: 0;
+    height: 140px;
+    width: 100px;
 }
 
-.imagens-arastar img {
-    height: 180px;
-    width: 130px;
+.draggable {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: grab;
+}
+
+.draggable.dragging {
+    opacity: 0.5;
+    border: 2px dashed red;
 }
