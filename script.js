@@ -1,12 +1,34 @@
 const draggables = document.querySelectorAll('.draggable');
 const dropzones = document.querySelectorAll('.dropzone');
 
-draggables.forEach(draggable => {
-    
-    if (!draggable.id) {
-        console.error("Erro: O elemento draggable não possui um ID. O Drag and Drop não funcionará.");
+/* ========= CRIA IDs AUTOMÁTICOS NAS DROPZONES ========= */
+dropzones.forEach((dropzone, index) => {
+    if (!dropzone.id) {
+        dropzone.id = 'dropzone-' + index;
     }
-    
+});
+
+/* ========= RESTAURA DO LOCALSTORAGE ========= */
+document.addEventListener('DOMContentLoaded', () => {
+    const savedData = JSON.parse(localStorage.getItem('dragDropData')) || {};
+
+    Object.entries(savedData).forEach(([draggableId, dropzoneId]) => {
+        const draggable = document.getElementById(draggableId);
+        const dropzone = document.getElementById(dropzoneId);
+
+        if (draggable && dropzone) {
+            dropzone.appendChild(draggable);
+        }
+    });
+});
+
+/* ========= DRAGGABLE ========= */
+draggables.forEach(draggable => {
+
+    if (!draggable.id) {
+        console.error("Erro: Draggable sem ID.");
+    }
+
     draggable.addEventListener('dragstart', (event) => {
         event.dataTransfer.setData('text/plain', draggable.id);
         event.dataTransfer.effectAllowed = 'move';
@@ -16,17 +38,19 @@ draggables.forEach(draggable => {
     draggable.addEventListener('dragend', () => {
         draggable.classList.remove('dragging');
     });
+
 });
 
+/* ========= DROPZONES ========= */
 dropzones.forEach(dropzone => {
-    
+
     dropzone.addEventListener('dragenter', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         dropzone.classList.add('over');
     });
 
     dropzone.addEventListener('dragover', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
     });
 
@@ -40,17 +64,26 @@ dropzones.forEach(dropzone => {
 
         const draggableId = event.dataTransfer.getData('text/plain');
         const draggableElement = document.getElementById(draggableId);
-        
-        if (draggableElement) {
-            if (dropzone.children.length === 0) {
-                 dropzone.appendChild(draggableElement); 
-                 const originalParent = draggableElement.closest('.imagens-arastar');
-                 if (originalParent) {
-                     originalParent.remove();
-                 }
-            } else {
-                 console.log('Dropzone já ocupada. Drop não permitido.');
-            }
+
+        if (!draggableElement) return;
+
+        // impede colocar mais de uma imagem
+        if (dropzone.children.length > 0) {
+            console.log('Dropzone já ocupada.');
+            return;
         }
+
+        dropzone.appendChild(draggableElement);
+
+        const originalParent = draggableElement.closest('.imagens-arastar');
+        if (originalParent) {
+            originalParent.remove();
+        }
+
+        /* ========= SALVA NO LOCALSTORAGE ========= */
+        const savedData = JSON.parse(localStorage.getItem('dragDropData')) || {};
+        savedData[draggableId] = dropzone.id;
+        localStorage.setItem('dragDropData', JSON.stringify(savedData));
     });
+
 });
